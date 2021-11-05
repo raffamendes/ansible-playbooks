@@ -1,0 +1,8 @@
+---
+- import_playbook: amq-streams-pre-config-all-hosts.yaml
+- import_playbook: amq-streams-pre-config-kafka.yaml
+- import_playbook: amq-streams-pre-config-zk.yaml
+- import_playbook: amq-streams-config-zk.yaml
+- import_playbook: amq-streams-start-zk.yaml
+- import_playbook: amq-streams-config-kafka.yaml
+- import_playbook: amq-streams-start-kafka.yaml

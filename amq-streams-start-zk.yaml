@@ -1,0 +1,8 @@
+---
+- hosts: zk
+  gather_facts: false
+  tasks:
+
+  - name: Start Zookeeper
+    shell: sudo -H -u kafka bash -c "/opt/kafka/kafka_2.12-2.5.0.redhat-00003/bin/zookeeper-server-start.sh -daemon /opt/kafka/kafka_2.12-2.5.0.redhat-00003/config/zookeeper.properties"
+

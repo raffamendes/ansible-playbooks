@@ -1,0 +1,57 @@
+---
+- hosts: all
+  gather_facts: false
+  vars:
+    ansible_ssh_private_key: "/home/rmendes/.ssh/quicklab.key"
+  tasks:
+
+    - name: Copy kafka to remote
+      copy:
+        src: /home/rmendes/Downloads/amq-streams-1.5.0-bin.zip
+        dest: /home/quicklab/amq-streams-1.5.0-bin.zip
+
+    - name: Create Kafka Group
+      become: yes
+      group:
+        name: kafka
+        state: present
+
+    - name: Create Kafka User
+      become: yes
+      user:
+        name: kafka
+        password: "{{ 'kafka' | password_hash('sha512')  }}"
+        group: kafka
+        state: present
+
+    - name: Create /opt/kafka
+      become: yes
+      file:
+        path: /opt/kafka
+        state: directory
+
+    - name: Install packages
+      become: yes
+      yum:
+        name: 
+          - unzip
+          - java-1.8.0-openjdk-devel
+        state: present
+
+    - name: Unzip AmqStreams to /opt/kafka
+      become: yes
+      unarchive:
+        src: /home/quicklab/amq-streams-1.5.0-bin.zip
+        dest: /opt/kafka
+        remote_src: yes
+
+    - name: Change Ownership on /opt/kafka/ to kaffa user
+      become: yes
+      file:
+        path: /opt/kafka
+        state: directory
+        recurse: yes
+        owner: kafka
+        group: kafka
+      
+        

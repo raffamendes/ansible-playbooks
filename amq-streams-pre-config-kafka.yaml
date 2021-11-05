@@ -1,0 +1,29 @@
+---
+- hosts: kafka
+  become: yes
+  tasks:
+    - name: Create /var/lib/kafka
+      file:
+        path: /var/lib/kafka
+        state: directory
+        owner: kafka
+        group: kafka
+
+    - name: Open Firewall port 9091
+      firewalld:
+        port: 9091/tcp
+        permanent: yes
+        zone: public
+        state: enabled
+
+    - name: Open Firewall port 9092
+      firewalld:
+        port: 9092/tcp
+        permanent: yes
+        zone: public
+        state: enabled
+
+    - name: Restart FirewallD
+      systemd:
+        name: firewalld
+        state: restarted

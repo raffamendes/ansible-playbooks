@@ -1,0 +1,8 @@
+[zk]
+node-0.rmendesansible.lab.pnq2.cee.redhat.com myid=1
+node-1.rmendesansible.lab.pnq2.cee.redhat.com myid=2
+node-2.rmendesansible.lab.pnq2.cee.redhat.com myid=3
+[kafka]
+node-3.rmendesansible.lab.pnq2.cee.redhat.com myid=1
+node-4.rmendesansible.lab.pnq2.cee.redhat.com myid=2
+node-5.rmendesansible.lab.pnq2.cee.redhat.com myid=3

@@ -1,0 +1,7 @@
+---
+- hosts: kafka
+  tasks:
+
+  - name: Start Kafka
+    shell: sudo -H -u kafka bash -c "/opt/kafka/kafka_2.12-2.5.0.redhat-00003/bin/kafka-server-start.sh -daemon /opt/kafka/kafka_2.12-2.5.0.redhat-00003/config/server.properties"
+#/opt/kafka/bin/kafka-server-start.sh -daemon /opt/kafka/config/server.properties

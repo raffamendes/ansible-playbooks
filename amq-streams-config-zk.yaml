@@ -1,0 +1,21 @@
+---
+- hosts: zk
+  gather_facts: false
+  vars_files:
+    - vars/zk-vars.yaml
+  become: yes
+  become_user: kafka
+  tasks:
+  
+  - name: Create ZK Config File
+    template: 
+      src: templates/zookeeper.properties.j2
+      dest: /opt/kafka/kafka_2.12-2.5.0.redhat-00003/config/zookeeper.properties
+
+  - name: Create myid Files
+    shell: 'echo "{{ myid }}" > /var/lib/zookeeper/myid'
+
+#  - name: Start Zookeeper
+#    shell:  |
+#      /opt/kafka/kafka_2.12-2.5.0.redhat-00003/bin/zookeeper-server-start.sh /opt/kafka/kafka_2.12-2.5.0.redhat-00003/config/zookeeper.properties
+

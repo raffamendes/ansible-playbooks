@@ -1,0 +1,10 @@
+timeTick={{ zk_time_tick  }}
+dataDir={{ zk_data_dir }}
+initLimit={{ zk_init_limit }}
+syncLimit={{ zk_sync_limit }}
+reconfigEnabled={{ zk_reconfig_enabled }}
+standaloneEnabled={{ zk_standalone_enable }}
+
+server.1={{ zk_node_1 }}:2888:3888:participant;{{ zk_node_1 }}:{{ zk_port }}
+server.2={{ zk_node_2 }}:2888:3888:participant;{{ zk_node_2 }}:{{ zk_port }}
+server.3={{ zk_node_3 }}:2888:3888:participant;{{ zk_node_3 }}:{{ zk_port }}

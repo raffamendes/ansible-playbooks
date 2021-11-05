@@ -1,0 +1,36 @@
+---
+- hosts: zk
+  become: yes
+  tasks:
+    - name: Create /var/lib/zookeeper
+      file:
+        path: /var/lib/zookeeper
+        state: directory
+        owner: kafka
+        group: kafka
+
+    - name: Open Firewall port 2181
+      firewalld: 
+        port: 2181/tcp
+        permanent: yes
+        zone: public
+        state: enabled
+
+    - name: Open Firewall port 2888
+      firewalld: 
+        port: 2888/tcp
+        permanent: yes
+        zone: public
+        state: enabled
+
+    - name: Open Firewall port 3888
+      firewalld: 
+        port: 3888/tcp
+        permanent: yes
+        zone: public
+        state: enabled
+
+    - name: Restart FirewallD
+      systemd:
+        name: firewalld
+        state: restarted

@@ -1,0 +1,21 @@
+---
+- hosts: kafka 
+  gather_facts: false
+  vars:
+  - kafka_log_dir: /var/lib/kafka
+  vars_files:
+    - vars/zk-vars.yaml
+  become: yes
+  become_user: kafka
+  tasks:
+  
+  - name: Create Kafka Config File
+    template: 
+      src: templates/server.properties.j2
+      dest: /opt/kafka/kafka_2.12-2.5.0.redhat-00003/config/server.properties
+
+
+#  - name: Start Zookeeper
+#    shell:  |
+#      /opt/kafka/kafka_2.12-2.5.0.redhat-00003/bin/zookeeper-server-start.sh /opt/kafka/kafka_2.12-2.5.0.redhat-00003/config/zookeeper.properties
+
