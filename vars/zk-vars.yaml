@@ -1,8 +1,8 @@
 ---
 zk_data_dir: /var/lib/zookeeper/
-zk_node_1: 10.74.183.186
-zk_node_2: 10.74.182.249
-zk_node_3: 10.74.181.134
+zk_node_1: 10.74.180.53
+zk_node_2: 10.74.181.63
+zk_node_3: 10.74.177.2
 zk_port: 2181
 zk_time_tick: 3000
 zk_init_limit: 5 
